@@ -18,10 +18,20 @@
                 </div>
                 <div class="modal-body">
                     <!-- Form -->
+                    <form>
+                        <label for="name">Name</label>
+                        <input class="form-control" type="text" name="name" id="name" placeholder="Enter Full Name..." autocomplete="off"  />
+                        <label for="email">E-mail</label>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="Enter E-mail..." autocomplete="off" />
+                        <label for="mobile">Mobile</label>
+                        <input class="form-control" type="text" name="mobile" id="mobile" placeholder="Enter Mobile #..." autocomplete="off"  />
+                        <label for="major">Major</label>
+                        <input class="form-control" type="text" name="major" id="major" placeholder="Enter Major..." autocomplete="off"  />
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
