@@ -34,6 +34,14 @@ if(isset($_POST['displaySend'])){
             <td>' . $name . '</td>
             <td>' . $mobile . ' </td>
             <td>' . $major . '</td>
+            <td>
+                <button class="btn btn-secondary">
+                    Update
+                </button>
+                <button class="btn btn-danger">
+                    Delete
+                </button>
+            </td>
         </tr>';
     }
     $tbody .= '</tbody>';
@@ -42,9 +50,3 @@ if(isset($_POST['displaySend'])){
 }
 
 ?>
-
-<td>
-    <button>
-        
-    </button>
-</td>
