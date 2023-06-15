@@ -47,6 +47,9 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#completeModal">
                 Add New Student
             </button>
+            <!-- Display Data Table -->
+            <div id="displayDataTable">
+            </div>
         </main>
     </div>
 
@@ -58,6 +61,22 @@
     <!-- Custom JavaScript -->
     <script>
         // Using jQuery...
+        const displayData = () => {
+            var displayData = "true";
+            $.ajax({
+                url:"display.php",
+                type: "post",
+                data: {
+                    "displaySend" : displayData
+                },
+                success: (data, status) => {
+                    console.log(status)
+                    // Display Data Inside HTML of '#displayDataTable'
+                    $('#displayDataTable').html(data);
+                }
+            })
+        }
+
         const adduser = () => {
             var nameAdd     = $('#name').val();
             var emailAdd    = $('#email').val();
@@ -78,6 +97,7 @@
                 success: (data, status) => {
                     // function to display data
                     console.log(status);
+                    displayData();
                 }
             })
         }

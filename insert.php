@@ -2,7 +2,6 @@
 
 include 'connect.php';
 
-// jQuery has a AJAX shortcut for variables
 extract($_POST);
 
 if(isset($_POST['nameSend']) 
