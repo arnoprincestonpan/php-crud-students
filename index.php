@@ -30,7 +30,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-primary" onclick="adduser()">Submit</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -50,7 +50,37 @@
         </main>
     </div>
 
-    <!-- Bootstrap's JavaScript -->
+    <!-- Bootstrap's Library Ref -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    
+    <!-- jQuery Library Ref-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        // Using jQuery...
+        const adduser = () => {
+            var nameAdd     = $('#name').val();
+            var emailAdd    = $('#email').val();
+            var mobileAdd   = $('#mobile').val();
+            var majorAdd    = $('#major').val();
+
+            // AJAX
+            $.ajax({
+                // sending data to file only (not another url)
+                url: "insert.php",
+                type: 'post',
+                data: {
+                    "nameSend": nameAdd,
+                    "emailSend": emailAdd,
+                    "mobileSend": mobileAdd,
+                    "majorSend": majorAdd
+                },
+                success: (data, status) => {
+                    // function to display data
+                    console.log(status);
+                }
+            })
+        }
+    </script>
 </body>
 </html>
