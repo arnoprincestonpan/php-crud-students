@@ -1,18 +1,22 @@
 <?php
-
 include 'connect.php';
 
-if(isset($_POST['updateId'])){
+if (isset($_POST['updateId'])) {
     $userId = $_POST['updateId'];
-    $sql = "SELECT * FROM `students` WHERE ID = $userId";
+    $name = $_POST['updateName'];
+    $email = $_POST['updateEmail'];
+    $mobile = $_POST['updateMobile'];
+    $major = $_POST['updateMajor'];
+
+    $sql = "UPDATE `students` SET full_name = '$name', email = '$email', mobile = '$mobile', major = '$major' WHERE ID = $userId";
     $result = mysqli_query($con, $sql);
-    $response = array(); // make an array 
-    while($row = mysqli_fetch_assoc($result)){
-        $response = $row; // pass it as an array
+
+    if ($result) {
+        echo "Update successful";
+    } else {
+        echo "Update failed";
     }
-    echo json_encode($response);
 } else {
-    $response['status'] = 200;
-    $response['message'] = "Invalid or data not found";
+    echo "Invalid or missing update ID";
 }
 ?>

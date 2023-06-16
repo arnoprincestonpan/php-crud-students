@@ -48,6 +48,7 @@
                 <div class="modal-body">
                     <!-- Form -->
                     <form>
+                        <input type="hidden" id="updateId" name="updateId"> <!-- Add this hidden field -->
                         <label for="updateName">Name</label>
                         <input class="form-control" type="text" name="updateName" id="updateName" placeholder="Enter Full Name..." autocomplete="off"  />
                         <label for="updateEmail">E-mail</label>
@@ -59,7 +60,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="addStudent()">Submit</button>
+                    <button type="button" class="btn btn-primary" onclick="updateStudent()">Submit</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -158,7 +159,7 @@
             $('#updateModal').modal('show');
 
             console.log(updateId);
-            $.post('update.php', { "updateId" : updateId }, (data, status) => {
+            $.post('fetch.php', { "updateId" : updateId }, (data, status) => {
                 var userId = JSON.parse(data);
                 $('#updateId').val(userId.id);
                 $('#updateEmail').val(userId.email);
@@ -167,6 +168,26 @@
                 $('#updateMajor').val(userId.major);
             });
         };
+
+        // Update Student
+        const updateStudent = () => {
+            var updateId = $('#updateId').val();
+            var updateEmail = $('#updateEmail').val();
+            var updateName = $('#updateName').val();
+            var updateMobile = $('#updateMobile').val();
+            var updateMajor = $('#updateMajor').val();
+            
+            $.post('update.php', {
+                "updateId": updateId, // Update this key
+                "updateEmail": updateEmail,
+                "updateName": updateName,
+                "updateMobile": updateMobile,
+                "updateMajor": updateMajor
+            }, (data, status) => {
+                $('#updateModal').modal('hide');
+                displayData();
+            })
+        }
 
 
         // Show ID
