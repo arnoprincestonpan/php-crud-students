@@ -13,7 +13,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">New Student Details</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -37,7 +37,36 @@
         </div>
     </div>
 
+    <!-- Update Modal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update Student Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form -->
+                    <form>
+                        <label for="updateName">Name</label>
+                        <input class="form-control" type="text" name="updateName" id="updateName" placeholder="Enter Full Name..." autocomplete="off"  />
+                        <label for="updateEmail">E-mail</label>
+                        <input class="form-control" type="email" name="updateEmail" id="updateEmail" placeholder="Enter E-mail..." autocomplete="off" />
+                        <label for="updateMobile">Mobile</label>
+                        <input class="form-control" type="text" name="updateMobile" id="updateMobile" placeholder="Enter Mobile #..." autocomplete="off"  />
+                        <label for="updateMajor">Major</label>
+                        <input class="form-control" type="text" name="updateMajor" id="updateMajor" placeholder="Enter Major..." autocomplete="off"  />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="addStudent()">Submit</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Control Buttons -->
     <div class="container my-3">
         <header>
             <h1 class="text-center">CRUD Student with PHP, Bootstrap Modal, AJAX, and MySQL</h1>
@@ -123,6 +152,22 @@
                 }
             })
         }
+
+        // Get Details
+        const getDetails = (updateId) => {
+            $('#updateModal').modal('show');
+
+            console.log(updateId);
+            $.post('update.php', { "updateId" : updateId }, (data, status) => {
+                var userId = JSON.parse(data);
+                $('#updateId').val(userId.id);
+                $('#updateEmail').val(userId.email);
+                $('#updateName').val(userId.full_name);
+                $('#updateMobile').val(userId.mobile);
+                $('#updateMajor').val(userId.major);
+            });
+        };
+
 
         // Show ID
         // Takes a class id of a html element and toggles it

@@ -39,7 +39,7 @@ if(isset($_POST['displaySend'])){
             <td>' . $mobile . ' </td>
             <td>' . $major . '</td>
             <td>
-                <button class="btn btn-secondary border m-1" onclick="updateStudent(' . $id . ')">
+                <button class="btn btn-secondary border m-1" onclick="getDetails(' . $id .')">
                     Update
                 </button>
                 <button class="btn btn-danger border m-1" onclick="deleteStudent(' . $id . ')">
