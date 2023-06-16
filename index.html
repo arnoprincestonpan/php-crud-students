@@ -30,7 +30,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="adduser()">Submit</button>
+                    <button type="button" class="btn btn-primary" onclick="addStudent()">Submit</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -81,7 +81,8 @@
             })
         }
 
-        const adduser = () => {
+        // Add Student
+        const addStudent = () => {
             var nameAdd     = $('#name').val();
             var emailAdd    = $('#email').val();
             var mobileAdd   = $('#mobile').val();
@@ -101,6 +102,21 @@
                 success: (data, status) => {
                     // function to display data
                     console.log(status);
+                    displayData();
+                }
+            })
+        }
+
+        // Delete Student
+        const deleteStudent = (deleteId) => {
+            $.ajax({
+                url: "delete.php",
+                type: 'post',
+                data: {
+                    "deleteSend": deleteId
+                },
+                success: (data, status) => {
+                    console.log(status)
                     displayData();
                 }
             })
