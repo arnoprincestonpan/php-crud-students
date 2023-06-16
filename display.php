@@ -7,7 +7,7 @@ if(isset($_POST['displaySend'])){
     $thead = '<thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">id</th>
+            <th scope="col" class="idColumn" style="display: none;">id</th> <!-- ID corresponding to SQL Database -->
             <th scope="col">Email</th>
             <th scope="col">Full Name</th>
             <th scope="col">Mobile</th>
@@ -33,7 +33,7 @@ if(isset($_POST['displaySend'])){
 
         $tbody .= '<tr>
             <td scope="row">' . $number . '</td>
-            <td>' . $id .'</td>
+            <td class="idColumn" style="display: none;">' . $id .'</td>
             <td>' . $email . '</td>
             <td>' . $name . '</td>
             <td>' . $mobile . ' </td>

@@ -44,9 +44,11 @@
         </header>
         <main>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#completeModal">
+            <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#completeModal">
                 Add New Student
             </button>
+            <!-- Display Toggle for student ID from SQL Database -->
+            <button type="button" class="btn btn-secondary m-1" onclick="toggleShowID('idColumn')">Show ID</button>
             <!-- Display Data Table -->
             <div id="displayDataTable">
             </div>
@@ -120,6 +122,12 @@
                     displayData();
                 }
             })
+        }
+
+        // Show ID
+        // Takes a class id of a html element and toggles it
+        const toggleShowID = (columnClass) => {
+            $('.' + columnClass).toggle();
         }
     </script>
 </body>
